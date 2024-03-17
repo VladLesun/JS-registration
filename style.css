@@ -1,0 +1,256 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 320px;
+	padding: 30px 0;
+	height: 100svh;
+	margin: 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: rgb(211, 211, 211);
+}
+
+input {
+	outline: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration,
+input::-webkit-inner-spin-button {
+	display: none;
+}
+
+/*! Стилизация заголовка */
+.main-title {
+	font-size: 24px;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+/*! Стилизация блока */
+.box {
+	max-width: 300px;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px black;
+}
+
+/*! Стилизация полей ввода */
+.box__field-wrap {
+	margin-bottom: 20px;
+}
+
+.box__input {
+	width: 100%;
+	padding: 8px 18px;
+	border: 0.5px solid grey;
+	border-radius: 5px;
+	box-shadow: 2px 2px 3px black;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.box__input:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.box__input:focus {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*! Стилизация кнопки показа пароля */
+.box__label {
+	position: relative;
+}
+
+.btn-invisible {
+	position: absolute;
+	top: 3px;
+	right: 16px;
+	width: 15px;
+	height: 15px;
+	background: url('img/eye-close.svg') center/contain no-repeat;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: background-image 0.3s ease-in-out;
+}
+
+.btn-visible {
+	background-image: url('img/eye-open.svg');
+}
+
+/*! Стилизация полей с ошибками */
+.error-field {
+	color: red;
+	font-size: 12px;
+}
+
+/*! Стилизация поля соглашения с условиями */
+.box__label-check {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	cursor: pointer;
+}
+
+.box__label-input {
+	appearance: none;
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	inset: 0;
+	margin: 0;
+	border: 1px solid gray;
+	border-radius: 3px;
+	cursor: inherit;
+	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.box__label-input::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	display: block;
+	content: '';
+	transform: translate(-50%, -50%);
+	width: inherit;
+	height: inherit;
+	border-radius: 2px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 87%;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.box__label-input:checked {
+	border-color: transparent;
+}
+.box__label-input:checked::after {
+	background-color: black;
+	background-image: url('img/complete.svg');
+	opacity: 1;
+}
+
+.box__label-span {
+	font-size: 14px;
+	color: gray;
+	transition: color 0.3s ease-in-out;
+}
+
+.box__label-check:hover > .box__label-span {
+	color: black;
+}
+
+.box__label-check:hover > .box__label-input {
+	box-shadow: 2px 2px 3px black;
+}
+
+/*! Стилизация кнопки */
+.box__btn {
+	width: 100%;
+	padding: 8px 18px;
+	border: 0.5px solid grey;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 2px 2px 3px black;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.box__btn:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.box__btn:active {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*! Стилизация модального окна  */
+.modal {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	inset: 0;
+	width: 100%;
+	height: 100svh;
+	background-color: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+	animation: fade linear 0.3s forwards;
+}
+
+.modal-overlay {
+	position: relative;
+	width: 100%;
+	max-width: 300px;
+	height: 320px;
+	padding: 20px;
+	background-color: white;
+	z-index: 2;
+	cursor: auto;
+	animation: is-open-modal ease 0.5s forwards;
+}
+
+.modal-img {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.modal-text {
+	margin: 0;
+	font-size: 14px;
+}
+
+.modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 18px;
+	height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	outline: none;
+	background-color: transparent;
+	cursor: pointer;
+	background: url('img/close.svg') center/contain no-repeat;
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes is-open-modal {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
